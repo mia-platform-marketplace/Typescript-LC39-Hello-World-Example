@@ -16,11 +16,36 @@
 /* eslint require-await: 0 */
 'use strict'
 
-import * as customPlugin from "@mia-platform/custom-plugin-lib";
+import {DecoratedRequest} from "@mia-platform/custom-plugin-lib";
+import {FastifyReply} from "fastify";
 const customService = require('@mia-platform/custom-plugin-lib')();
-const robotHello = require("./handlers/robotHello");
+
+const schema = {
+    querystring: {
+        type: 'object',
+        properties: {
+            who: {
+                type: 'string',
+                default: 'World',
+            },
+        },
+    },
+    response: {
+        200: {
+            type: 'object',
+            properties: {
+                message: {
+                    type: 'string',
+                },
+            },
+        },
+    },
+}
 
 /* eslint-disable-next-line no-unused-vars */
 module.exports = customService(async function index(service:any) {
-    service.addRawCustomPlugin('GET', '/hello', robotHello.handler, robotHello.schema)
+    service.addRawCustomPlugin('GET', '/hello', async(request:DecoratedRequest, reply:FastifyReply<any>) => {
+        reply.code(200).send({message: `Hello ${request.getUserId() || request.query.who}`})
+    }, schema)
 })
+
