@@ -31,6 +31,8 @@ ENV HTTP_PORT=3000
 
 WORKDIR /home/node/app
 
+RUN npm run build
+
 COPY --from=build /build-dir ./
 
 USER node

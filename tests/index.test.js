@@ -20,7 +20,7 @@ const t = require('tap')
 const lc39 = require('@mia-platform/lc39')
 
 async function setupFastify(envVariables) {
-  const fastify = await lc39('./lib/index.js', {
+  const fastify = await lc39('./dist/index.js', {
     logLevel: 'silent',
     envVariables,
   })

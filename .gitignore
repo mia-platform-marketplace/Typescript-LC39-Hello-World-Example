@@ -10,4 +10,4 @@ node_modules
 .yarn-integrity
 !default.env
 .npmrc
-lib
+dist

@@ -16,9 +16,9 @@
 /* eslint require-await: 0 */
 'use strict'
 
-import {DecoratedRequest} from "@mia-platform/custom-plugin-lib";
 import {FastifyReply} from "fastify";
-const customService = require('@mia-platform/custom-plugin-lib')();
+import customPluginLib from '@mia-platform/custom-plugin-lib';
+const customService = customPluginLib();
 
 const schema = {
     querystring: {
@@ -43,8 +43,8 @@ const schema = {
 }
 
 /* eslint-disable-next-line no-unused-vars */
-module.exports = customService(async function index(service:any) {
-    service.addRawCustomPlugin('GET', '/hello', async(request:DecoratedRequest, reply:FastifyReply<any>) => {
+export default customService(async function index(service:customPluginLib.DecoratedFastify) {
+    service.addRawCustomPlugin('GET', '/hello', async function (request:customPluginLib.DecoratedRequest, reply:FastifyReply<any>) {
         reply.code(200).send({message: `Hello ${request.getUserId() || request.query.who}`})
     }, schema)
 })
