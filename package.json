@@ -1,7 +1,7 @@
 {
   "name": "mia_template_service_name_placeholder",
   "version": "0.1.0",
-  "description": "Hello World Example with typescript and LC39",
+  "description": "%CUSTOM_PLUGIN_SERVICE_DESCRIPTION%",
   "main": "dist/index.js",
   "scripts": {
     "checkonly": "! grep -R '\\.only' tests/",
