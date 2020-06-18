@@ -9,8 +9,12 @@ COPY package.json .
 COPY package-lock.json .
 
 RUN npm ci
+RUN npm i -g typescript
 
 COPY . .
+
+RUN npm run build
+RUN rm -rf ./src
 
 RUN echo "mia_template_service_name_placeholder: $COMMIT_SHA" >> ./commit.sha
 
@@ -30,8 +34,6 @@ ENV SERVICE_PREFIX=/
 ENV HTTP_PORT=3000
 
 WORKDIR /home/node/app
-
-RUN npm run build
 
 COPY --from=build /build-dir ./
 

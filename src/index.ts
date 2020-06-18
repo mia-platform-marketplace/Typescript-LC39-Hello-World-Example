@@ -17,8 +17,8 @@
 'use strict'
 
 import {FastifyReply} from "fastify";
-import customPluginLib from '@mia-platform/custom-plugin-lib';
-const customService = customPluginLib();
+import {DecoratedFastify, DecoratedRequest} from "@mia-platform/custom-plugin-lib";
+const customService = require('@mia-platform/custom-plugin-lib')()
 
 const schema = {
     querystring: {
@@ -43,8 +43,8 @@ const schema = {
 }
 
 /* eslint-disable-next-line no-unused-vars */
-export default customService(async function index(service:customPluginLib.DecoratedFastify) {
-    service.addRawCustomPlugin('GET', '/hello', async function (request:customPluginLib.DecoratedRequest, reply:FastifyReply<any>) {
+export default customService(async function index(service:DecoratedFastify) {
+    service.addRawCustomPlugin('GET', '/hello', async function (request:DecoratedRequest, reply:FastifyReply<any>) {
         reply.code(200).send({message: `Hello ${request.getUserId() || request.query.who}`})
     }, schema)
 })
