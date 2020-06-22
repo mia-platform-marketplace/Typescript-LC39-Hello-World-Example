@@ -43,7 +43,7 @@ const schema = {
 }
 
 /* eslint-disable-next-line no-unused-vars */
-export default customService(async function index(service:DecoratedFastify) {
+module.exports = customService(async function index(service:DecoratedFastify) {
     service.addRawCustomPlugin('GET', '/hello', async function (request:DecoratedRequest, reply:FastifyReply<any>) {
         reply.code(200).send({message: `Hello ${request.getUserId() || request.query.who}`})
     }, schema)
