@@ -1,4 +1,4 @@
-# typescript-lc39-hello-world-example
+# mia_template_service_name_placeholder
 
 # nodejs-custom-plugin
 [![pipeline status][pipeline]][git-link]
