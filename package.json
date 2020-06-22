@@ -19,15 +19,15 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "@mia-platform/custom-plugin-lib": "^1.1.1",
-    "fastify": "^2.14.1",
-    "typescript": "^3.9.5"
+    "@mia-platform/custom-plugin-lib": "^1.1.1"
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
     "eslint": "^7.2.0",
     "nock": "^12.0.3",
-    "tap": "^14.10.7"
+    "tap": "^14.10.7",
+    "fastify": "^2.14.1",
+    "typescript": "^3.9.5"
   },
   "engines": {
     "node": ">=10"

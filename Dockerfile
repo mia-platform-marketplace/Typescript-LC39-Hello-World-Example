@@ -8,13 +8,12 @@ WORKDIR /build-dir
 COPY package.json .
 COPY package-lock.json .
 
-RUN npm ci
 RUN npm i -g typescript
+RUN npm ci
 
 COPY . .
 
 RUN npm run build
-RUN rm -rf ./src
 
 RUN echo "mia_template_service_name_placeholder: $COMMIT_SHA" >> ./commit.sha
 
@@ -35,7 +34,7 @@ ENV HTTP_PORT=3000
 
 WORKDIR /home/node/app
 
-COPY --from=build /build-dir ./
+COPY --from=build /build-dir/dist /build-dir/node_modules /build-dir/package.json ./
 
 USER node
 
