@@ -19,7 +19,8 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "fastify": "^2.14.1",
+    "@mia-platform/custom-plugin-lib": "^1.1.1",
+    "fastify": "^2.14.1"
     "@mia-platform/custom-plugin-lib": "^1.1.1"
   },
   "devDependencies": {
