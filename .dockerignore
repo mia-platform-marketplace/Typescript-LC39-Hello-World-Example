@@ -6,7 +6,7 @@
 build/Release
 coverage
 node_modules
-tests
+__tests__
 docs
 .dockerignore
 *.env

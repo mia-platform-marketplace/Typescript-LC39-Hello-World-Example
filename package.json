@@ -4,8 +4,8 @@
   "description": "%CUSTOM_PLUGIN_SERVICE_DESCRIPTION%",
   "main": "dist/index.js",
   "scripts": {
-    "checkonly": "! grep -R '\\.only' tests/",
-    "coverage": "npm run unit -- --coverage-report=text-summary",
+    "checkonly": "! grep -R '\\\\.only' __tests__/",
+    "coverage": "npm run unit -- --coverage",
     "postcoverage": "tap --coverage-report=lcov --no-browser",
     "lint": "eslint . --ignore-path=.gitignore",
     "start": "lc39 dist/index.js",
@@ -13,7 +13,7 @@
     "test": "npm run lint && npm run unit && npm run checkonly",
     "update-docker-version": "sed -i.bck \"s|version=\\\"[0-9]*\\.[0-9]*\\.[0-9]*.*\\\"|version=\\\"${npm_package_version}\\\"|\" Dockerfile",
     "update-changelog": "node ./scripts/update-changelog.js ${npm_package_version}",
-    "unit": "tap -o tap.log tests/*.test.js",
+    "unit": "jest",
     "version": "npm run update-changelog && npm run update-docker-version && rm -fr Dockerfile.bck && git add CHANGELOG.md Dockerfile",
     "build": "tsc --project tsconfig.json"
   },
@@ -23,10 +23,11 @@
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
+    "@types/jest": "^26.0.0",
     "eslint": "^7.2.0",
-    "nock": "^12.0.3",
-    "tap": "^14.10.7",
     "fastify": "^2.14.1",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
   "engines": {

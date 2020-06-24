@@ -15,8 +15,8 @@
  */
 'use strict'
 
-import {FastifyReply} from "fastify";
-import {DecoratedFastify, DecoratedRequest} from "@mia-platform/custom-plugin-lib";
+import {FastifyReply} from "fastify"
+import {DecoratedFastify, DecoratedRequest} from "@mia-platform/custom-plugin-lib"
 const customService = require('@mia-platform/custom-plugin-lib')()
 
 const schema = {
