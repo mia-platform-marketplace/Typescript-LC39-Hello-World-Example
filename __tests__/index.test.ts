@@ -19,7 +19,6 @@
 const lc39 = require('@mia-platform/lc39')
 import { FastifyInstance } from 'fastify'
 
-
 let fastify: FastifyInstance
 
 export interface ProcessEnv {
