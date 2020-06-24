@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 'use strict'
 
 const lc39 = require('@mia-platform/lc39')
