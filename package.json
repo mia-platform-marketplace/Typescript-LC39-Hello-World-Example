@@ -6,7 +6,6 @@
   "scripts": {
     "checkonly": "! grep -R '\\\\.only' __tests__/",
     "coverage": "npm run unit -- --coverage",
-    "postcoverage": "tap --coverage-report=lcov --no-browser",
     "lint": "eslint . --ignore-path=.gitignore",
     "start": "lc39 dist/index.js",
     "start:local": "npm start -- --env-path ./default.env",
