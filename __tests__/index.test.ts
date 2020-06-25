@@ -18,17 +18,15 @@
 const lc39 = require('@mia-platform/lc39')
 import {FastifyInstance} from 'fastify'
 
-
 export interface ProcessEnv {
   [key: string]: string | undefined
 }
-
 
 describe('mia_template_service_name_placeholder', () => {
   let fastify: FastifyInstance
 
   async function setupFastify(envVariables: ProcessEnv): Promise<FastifyInstance> {
-    fastify = await lc39('./dist/index.js', {
+    const fastify = await lc39('./dist/index.js', {
       logLevel: 'silent',
       envVariables,
     })
