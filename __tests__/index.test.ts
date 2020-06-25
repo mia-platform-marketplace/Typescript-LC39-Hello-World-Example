@@ -16,43 +16,46 @@
 'use strict'
 
 const lc39 = require('@mia-platform/lc39')
-import { FastifyInstance } from 'fastify'
+import {FastifyInstance} from 'fastify'
 
-let fastify: FastifyInstance
 
 export interface ProcessEnv {
   [key: string]: string | undefined
 }
 
-async function setupFastify(envVariables: ProcessEnv) : Promise<FastifyInstance> {
-    fastify = await lc39('./dist/index.js', {
-        logLevel: 'silent',
-        envVariables,
-    })
-  return fastify
-}
-
-beforeAll(async () => {
-  await setupFastify({
-        USERID_HEADER_KEY: 'userid',
-        GROUPS_HEADER_KEY: 'groups',
-        CLIENTTYPE_HEADER_KEY: 'clienttype',
-        BACKOFFICE_HEADER_KEY: 'backoffice',
-        MICROSERVICE_GATEWAY_SERVICE_NAME: 'microservice-gateway.example.org'
-      })
-})
-
-afterAll(async () => {
-  await fastify.close()
-})
 
 describe('mia_template_service_name_placeholder', () => {
-  test('GET /hello', async () => {
-        const response = await fastify.inject({
-            method: 'GET',
-            url: '/hello',
-        })
-        expect(response.statusCode).toEqual(200);
-        expect(JSON.parse(response.payload)).toEqual({ message: 'Hello World' })
+  let fastify: FastifyInstance
+
+  async function setupFastify(envVariables: ProcessEnv): Promise<FastifyInstance> {
+    fastify = await lc39('./dist/index.js', {
+      logLevel: 'silent',
+      envVariables,
     })
+    return fastify
+  }
+
+  beforeAll(async () => {
+    await setupFastify({
+      USERID_HEADER_KEY: 'userid',
+      GROUPS_HEADER_KEY: 'groups',
+      CLIENTTYPE_HEADER_KEY: 'clienttype',
+      BACKOFFICE_HEADER_KEY: 'backoffice',
+      MICROSERVICE_GATEWAY_SERVICE_NAME: 'microservice-gateway.example.org'
+    })
+  })
+
+  afterAll(async () => {
+    await fastify.close()
+  })
+
+
+  test('GET /hello', async () => {
+    const response = await fastify.inject({
+      method: 'GET',
+      url: '/hello',
+    })
+    expect(response.statusCode).toEqual(200);
+    expect(JSON.parse(response.payload)).toEqual({message: 'Hello World'})
+  })
 })

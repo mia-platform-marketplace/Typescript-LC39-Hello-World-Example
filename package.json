@@ -4,7 +4,6 @@
   "description": "%CUSTOM_PLUGIN_SERVICE_DESCRIPTION%",
   "main": "dist/index.js",
   "scripts": {
-    "checkonly": "! grep -R '\\\\.only' __tests__/",
     "coverage": "npm run unit -- --coverage",
     "lint": "eslint . --ignore-path=.gitignore",
     "start": "lc39 dist/index.js",
