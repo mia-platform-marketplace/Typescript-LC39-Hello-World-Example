@@ -34,7 +34,7 @@ describe('mia_template_service_name_placeholder', () => {
   }
 
   beforeAll(async () => {
-    await setupFastify({
+    fastify = await setupFastify({
       USERID_HEADER_KEY: 'userid',
       GROUPS_HEADER_KEY: 'groups',
       CLIENTTYPE_HEADER_KEY: 'clienttype',
