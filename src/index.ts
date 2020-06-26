@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* eslint require-await: 0 */
 'use strict'
 
-import {DecoratedRequest} from "@mia-platform/custom-plugin-lib";
-import {FastifyReply} from "fastify";
-const customService = require('@mia-platform/custom-plugin-lib')();
+import {FastifyReply} from "fastify"
+import {DecoratedFastify, DecoratedRequest} from "@mia-platform/custom-plugin-lib"
+const customService = require('@mia-platform/custom-plugin-lib')()
 
 const schema = {
     querystring: {
@@ -42,10 +41,8 @@ const schema = {
     },
 }
 
-/* eslint-disable-next-line no-unused-vars */
-module.exports = customService(async function index(service:any) {
-    service.addRawCustomPlugin('GET', '/hello', async(request:DecoratedRequest, reply:FastifyReply<any>) => {
-        reply.code(200).send({message: `Hello ${request.getUserId() || request.query.who}`})
+module.exports = customService(async function index(service:DecoratedFastify) {
+    service.addRawCustomPlugin('GET', '/hello', async function (request:DecoratedRequest, reply:FastifyReply<any>) {
+        return { message: `Hello ${request.getUserId() || request.query.who}` }
     }, schema)
 })
-

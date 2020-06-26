@@ -1,25 +1,19 @@
 {
-  "name": "typescript-lc39-hello-world-example",
+  "name": "mia_template_service_name_placeholder",
   "version": "0.1.0",
-  "description": "Hello World Example with typescript and LC39",
-  "main": "lib/index.js",
+  "description": "%CUSTOM_PLUGIN_SERVICE_DESCRIPTION%",
+  "main": "dist/index.js",
   "scripts": {
-    "checkonly": "! grep -R '\\.only' tests/",
-    "coverage": "npm run unit -- --coverage-report=text-summary",
-    "postcoverage": "tap --coverage-report=lcov --no-browser",
+    "coverage": "npm run unit -- --coverage",
     "lint": "eslint . --ignore-path=.gitignore",
-    "start": "lc39 lib/index.js",
+    "start": "lc39 dist/index.js",
     "start:local": "npm start -- --env-path ./default.env",
-    "test": "npm run lint && npm run unit && npm run checkonly",
+    "test": "npm run lint && npm run unit",
     "update-docker-version": "sed -i.bck \"s|version=\\\"[0-9]*\\.[0-9]*\\.[0-9]*.*\\\"|version=\\\"${npm_package_version}\\\"|\" Dockerfile",
     "update-changelog": "node ./scripts/update-changelog.js ${npm_package_version}",
-    "unit": "tap -o tap.log tests/*.test.js",
+    "unit": "jest",
     "version": "npm run update-changelog && npm run update-docker-version && rm -fr Dockerfile.bck && git add CHANGELOG.md Dockerfile",
-    "typescript": "tsc --project tsconfig.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mia-platform-marketplace/Typescript-LC39-Hello-World-Example.git"
+    "build": "tsc --project tsconfig.json"
   },
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
@@ -28,9 +22,10 @@
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
+    "@types/jest": "^26.0.0",
     "eslint": "^7.2.0",
-    "nock": "^12.0.3",
-    "tap": "^14.10.7",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
   "engines": {
