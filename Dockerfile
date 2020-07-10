@@ -1,6 +1,7 @@
 FROM node:12.3.1-alpine as build
 
 ARG COMMIT_SHA=<not-specified>
+ENV NODE_ENV=production
 
 WORKDIR /build-dir
 
