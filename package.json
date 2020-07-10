@@ -18,15 +18,15 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "@mia-platform/custom-plugin-lib": "^1.1.1",
-    "fastify": "^2.15.1"
+    "fastify": "^2.15.1",
+    "typescript": "^3.9.6"
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
     "@types/jest": "^26.0.4",
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
-    "ts-jest": "^26.1.1",
-    "typescript": "^3.9.6"
+    "ts-jest": "^26.1.1"
   },
   "engines": {
     "node": ">=10"

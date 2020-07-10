@@ -8,7 +8,6 @@ WORKDIR /build-dir
 COPY package.json .
 COPY package-lock.json .
 
-RUN npm i -g typescript
 RUN npm ci
 
 COPY . .
