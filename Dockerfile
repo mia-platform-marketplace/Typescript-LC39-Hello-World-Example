@@ -33,7 +33,7 @@ ENV HTTP_PORT=3000
 
 WORKDIR /home/node/app
 
-COPY --from=build /build-dir/node_modules ./node_modules
+COPY --from=build /build-dir ./
 COPY --from=build /build-dir/dist ./dist
 COPY --from=build /build-dir/package.json ./
 
