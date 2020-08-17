@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
-    "@types/jest": "^26.0.9",
+    "@types/jest": "^26.0.10",
     "eslint": "^7.6.0",
     "jest": "^26.4.0",
     "ts-jest": "^26.2.0"
