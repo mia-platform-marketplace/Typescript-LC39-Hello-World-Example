@@ -19,7 +19,7 @@
   "dependencies": {
     "@mia-platform/custom-plugin-lib": "^2.1.1",
     "fastify": "^2.15.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.5"
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
