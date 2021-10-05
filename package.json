@@ -29,7 +29,7 @@
     "ts-jest": "^27.0.5"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=14"
   },
   "private": true,
   "eslintConfig": {
