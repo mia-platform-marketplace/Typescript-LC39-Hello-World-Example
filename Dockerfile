@@ -1,4 +1,4 @@
-FROM node:12.3.1-alpine as build
+FROM node:14-alpine as build
 
 ARG COMMIT_SHA=<not-specified>
 ENV NODE_ENV=production
@@ -18,7 +18,7 @@ RUN echo "mia_template_service_name_placeholder: $COMMIT_SHA" >> ./commit.sha
 
 ########################################################################################################################
 
-FROM node:12.3.1-alpine
+FROM node:14-alpine
 
 LABEL maintainer="%CUSTOM_PLUGIN_CREATOR_USERNAME%" \
       name="mia_template_service_name_placeholder" \
@@ -37,4 +37,4 @@ COPY --from=build /build-dir ./
 
 USER node
 
-CMD ["npm", "-s", "start", "--", "--options", "--port", "${HTTP_PORT}", "--log-level", "${LOG_LEVEL}", "--prefix=${SERVICE_PREFIX}", "--address", "0.0.0.0"]
+CMD ["npm", "-s", "start", "--", "--port", "${HTTP_PORT}", "--log-level", "${LOG_LEVEL}", "--prefix=${SERVICE_PREFIX}"]

@@ -23,8 +23,6 @@ export interface ProcessEnv {
 }
 
 describe('mia_template_service_name_placeholder', () => {
-  let fastify: FastifyInstance
-
   async function setupFastify(envVariables: ProcessEnv): Promise<FastifyInstance> {
     const fastify = await lc39('src/index.ts', {
       logLevel: 'silent',
@@ -33,7 +31,8 @@ describe('mia_template_service_name_placeholder', () => {
     return fastify
   }
 
-  beforeAll(async () => {
+  let fastify: FastifyInstance
+  beforeEach(async () => {
     fastify = await setupFastify({
       USERID_HEADER_KEY: 'userid',
       GROUPS_HEADER_KEY: 'groups',
@@ -43,17 +42,42 @@ describe('mia_template_service_name_placeholder', () => {
     })
   })
 
-  afterAll(async () => {
+  afterEach(async () => {
     await fastify.close()
   })
 
 
-  test('GET /hello', async () => {
+  test('GET /hello without params nor user', async () => {
     const response = await fastify.inject({
       method: 'GET',
       url: '/hello',
     })
     expect(response.statusCode).toEqual(200);
     expect(JSON.parse(response.payload)).toEqual({message: 'Hello World'})
+  })
+
+  test('GET /hello with query param', async () => {
+    const response = await fastify.inject({
+      method: 'GET',
+      url: '/hello',
+      query: {
+        who: 'Lucy'
+      }
+    })
+    expect(response.statusCode).toEqual(200);
+    expect(JSON.parse(response.payload)).toEqual({message: 'Hello Lucy'})
+  })
+
+
+  test('GET /hello with user header set', async () => {
+    const response = await fastify.inject({
+      method: 'GET',
+      url: '/hello',
+      headers: {
+        userid: 'lucas'
+      }
+    })
+    expect(response.statusCode).toEqual(200);
+    expect(JSON.parse(response.payload)).toEqual({message: 'Hello lucas'})
   })
 })
