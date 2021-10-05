@@ -17,19 +17,19 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "@mia-platform/custom-plugin-lib": "^2.3.0",
-    "fastify": "^2.15.1",
-    "typescript": "^3.9.7"
+    "@mia-platform/custom-plugin-lib": "^4.1.1",
+    "fastify": "^3.22.0",
+    "typescript": "^4.4.3"
   },
   "devDependencies": {
     "@mia-platform/eslint-config-mia": "^3.0.0",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.2",
     "eslint": "^7.32.0",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.6"
+    "jest": "^27.0.2",
+    "ts-jest": "^27.0.5"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "private": true,
   "eslintConfig": {

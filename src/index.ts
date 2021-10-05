@@ -41,8 +41,16 @@ const schema = {
     },
 }
 
-module.exports = customService(async function index(service:DecoratedFastify) {
-    service.addRawCustomPlugin('GET', '/hello', async function (request:DecoratedRequest, reply:FastifyReply<any>) {
-        return { message: `Hello ${request.getUserId() || request.query.who}` }
+interface HelloQueryParameters {
+    who?: string
+}
+
+interface HelloRequest {
+    Querystring?: HelloQueryParameters
+}
+
+module.exports = customService(async function index(service:DecoratedFastify) {    
+    service.addRawCustomPlugin('GET', '/hello', async function (request:DecoratedRequest<HelloRequest>, reply:FastifyReply<any>) {
+        return { message: `Hello ${request.getUserId() || (request.query as HelloQueryParameters).who}` }
     }, schema)
 })
